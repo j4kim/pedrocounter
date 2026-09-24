@@ -5,7 +5,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <template>
-  <div>
+  <main>
     <Header>
       <a href="/" class="hover:text-primary">pedrocounter</a>
       <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
@@ -14,5 +14,5 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
         <Cog6ToothIcon class="size-6" />
       </RouterLink>
     </Header>
-  </div>
+  </main>
 </template>

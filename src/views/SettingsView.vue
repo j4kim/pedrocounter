@@ -6,7 +6,7 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-  <div>
+  <main>
     <Header>
       <HomeLink />
       Réglages
@@ -26,5 +26,5 @@ import Header from "../components/Header.vue";
         <button class="btn" @click="connectToDb" v-else>Connecter</button>
       </div>
     </div>
-  </div>
+  </main>
 </template>
