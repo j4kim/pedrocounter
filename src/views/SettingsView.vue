@@ -6,14 +6,14 @@ import Header from "../components/Header.vue";
 </script>
 
 <template>
-  <main>
+  <div>
     <Header>
       <HomeLink />
       Réglages
       <div class="grow"></div>
     </Header>
 
-    <div class="flex grow flex-col gap-12 p-6">
+    <main class="flex grow flex-col gap-12 p-6">
       <div>
         <div class="mb-2">Base de données</div>
         <div v-if="dbId" class="flex items-center gap-4">
@@ -25,6 +25,6 @@ import Header from "../components/Header.vue";
         </div>
         <button class="btn" @click="connectToDb" v-else>Connecter</button>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
