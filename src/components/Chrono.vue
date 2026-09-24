@@ -1,0 +1,46 @@
+<script setup>
+import { getBgClass, stop } from "../store.js";
+import Time from "./Time.vue";
+import ChronoButtons from "./ChronoButtons.vue";
+import Price from "./Price.vue";
+import { useTemplateRef } from "vue";
+import { useSwipe } from "@vueuse/core";
+
+const props = defineProps({
+  chrono: Object,
+  id: String,
+});
+
+const el = useTemplateRef("el");
+
+const { lengthX } = useSwipe(el, {
+  onSwipeEnd() {
+    if (
+      lengthX.value > 200 &&
+      props.chrono.state !== "initial" &&
+      confirm("Terminer ?")
+    ) {
+      stop(props.chrono);
+    }
+  },
+});
+</script>
+
+<template>
+  <div
+    ref="el"
+    :chrono="chrono"
+    class="flex h-40 grow cursor-pointer items-center justify-between px-6 py-1"
+    :class="getBgClass(chrono)"
+    @click="$router.push(`/chrono/${id}`)"
+  >
+    <div>
+      <div class="text-xl font-light">
+        {{ chrono.label }}
+      </div>
+      <Time class="text-4xl" :chrono></Time>
+      <Price class="text-3xl font-bold" :chrono></Price>
+    </div>
+    <ChronoButtons :chrono />
+  </div>
+</template>
