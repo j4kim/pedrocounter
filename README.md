@@ -1,4 +1,4 @@
-# multichrono
+# perdocounter
 
 Une application de gestion de plusieurs chronomètres en parallèle, avec tarification horaire. Idéal pour facturer la location d'équipements, genre des cibles de fléchettes.
 
