@@ -28,7 +28,7 @@ export async function putGunValue(gunNode, newValue) {
 export async function useGun(key, defaultValue) {
   const gun = GUN(["https://gun.jo2.ch/gun"]);
 
-  const gunNode = gun.get("perdocounter-" + dbId.value).get(key);
+  const gunNode = gun.get("pedrocounter-" + dbId.value).get(key);
 
   let gunValue = await getGunValue(gunNode);
 

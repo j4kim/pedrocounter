@@ -8,7 +8,7 @@ import { Cog6ToothIcon, PlusIcon } from "@heroicons/vue/24/solid";
 <template>
   <div class="flex flex-col">
     <header class="flex h-12 items-center justify-between gap-4 p-2 px-4">
-      <a href="/" class="link">perdocounter</a>
+      <a href="/" class="link">pedrocounter</a>
       <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
       <div class="grow"></div>
       <PlusIcon class="link size-6" @click="() => add()" />

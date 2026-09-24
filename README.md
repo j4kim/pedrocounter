@@ -1,4 +1,4 @@
-# perdocounter
+# pedrocounter
 
 Une application qui simplifie le partage des frais d'une voiture, basé sur le kilométrage de chaque utilisateur.
 
