@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { dbId } from "../db";
+import { connectToDb, dbId } from "../db";
 import Header from "../components/Header.vue";
 import HomeLink from "../components/HomeLink.vue";
 import { useRouter } from "vue-router";
@@ -10,7 +10,7 @@ const newDbId = ref(null);
 const router = useRouter();
 
 function connect() {
-  dbId.value = newDbId.value;
+  connectToDb(newDbId.value);
   router.push("/");
 }
 
