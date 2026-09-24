@@ -1,16 +1,17 @@
 <script setup>
-import { ArrowLeftIcon, XMarkIcon } from "@heroicons/vue/24/solid";
+import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { connectToDb, dbId, disconnectFromDb } from "../db.js";
+import HomeLink from "../components/HomeLink.vue";
+import Header from "../components/Header.vue";
 </script>
 
 <template>
   <div>
-    <header class="flex h-12 items-center gap-4 p-2 px-4 shadow">
-      <RouterLink to="/">
-        <ArrowLeftIcon class="size-6" />
-      </RouterLink>
+    <Header>
+      <HomeLink />
       Réglages
-    </header>
+      <div class="grow"></div>
+    </Header>
 
     <div class="flex grow flex-col gap-12 p-6">
       <div>
