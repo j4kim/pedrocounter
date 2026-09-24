@@ -2,9 +2,7 @@ import { useStorage } from "@vueuse/core";
 import GUN from "gun";
 import { computed, ref, watch } from "vue";
 
-const urlDbId = new URLSearchParams(location.search).get("db");
-
-export const dbId = urlDbId ? ref(urlDbId) : useStorage("perdocounter-dbId");
+export const dbId = useStorage("perdocounter-dbId");
 
 export async function getGunValue(gunNode) {
   return await new Promise((resolve) => {
@@ -27,6 +25,11 @@ export async function putGunValue(gunNode, newValue) {
 
 export async function useGun(key, defaultValue) {
   const gun = GUN(["https://gun.jo2.ch/gun"]);
+
+  if (!dbId.value) {
+    console.warn("no dbId");
+    return;
+  }
 
   const gunNode = gun.get("pedrocounter-" + dbId.value).get(key);
 
@@ -62,14 +65,6 @@ export async function useGun(key, defaultValue) {
   );
 
   return keyRef;
-}
-
-export async function createRef(key, defaultValue) {
-  if (dbId.value) {
-    return await useGun(key, useStorage(key, defaultValue).value);
-  } else {
-    return useStorage(key, defaultValue);
-  }
 }
 
 export async function connectToDb() {

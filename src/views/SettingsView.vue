@@ -5,7 +5,7 @@ import { connectToDb, dbId, disconnectFromDb } from "../db.js";
 
 <template>
   <div>
-    <header class="flex h-12 items-center gap-4 p-2 px-4">
+    <header class="flex h-12 items-center gap-4 p-2 px-4 shadow">
       <RouterLink to="/">
         <ArrowLeftIcon class="size-6" />
       </RouterLink>

@@ -5,7 +5,9 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 
 <template>
   <div>
-    <header class="flex h-12 items-center justify-between gap-4 p-2 px-4">
+    <header
+      class="flex h-12 items-center justify-between gap-4 p-2 px-4 shadow"
+    >
       <a href="/">pedrocounter</a>
       <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
       <div class="grow"></div>
