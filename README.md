@@ -1,8 +1,8 @@
 # perdocounter
 
-Une application de gestion de plusieurs chronomètres en parallèle, avec tarification horaire. Idéal pour facturer la location d'équipements, genre des cibles de fléchettes.
+Une application qui simplifie le partage des frais d'une voiture, basé sur le kilométrage de chaque utilisateur.
 
-Les données sont à choix stockées uniquement dans le navigateur ou sur un serveur gun.js avec mises à jour temps réel sur tous les terminaux connectés.
+Les données sont stockées sur un serveur gun.js.
 
 ## Installation
 
