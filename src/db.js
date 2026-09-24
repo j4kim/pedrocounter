@@ -4,7 +4,7 @@ import { computed, ref, watch } from "vue";
 
 const urlDbId = new URLSearchParams(location.search).get("db");
 
-export const dbId = urlDbId ? ref(urlDbId) : useStorage("dbId");
+export const dbId = urlDbId ? ref(urlDbId) : useStorage("perdocounter-dbId");
 
 export async function getGunValue(gunNode) {
   return await new Promise((resolve) => {
