@@ -29,8 +29,8 @@ export async function connectToDb(newDbId) {
   });
 }
 
-export function addItem() {
-  itemsNode.set({ km: prompt("km") });
+export function addItem(newItem) {
+  itemsNode.set(newItem);
 }
 
 export function deleteItem(id) {

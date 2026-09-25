@@ -4,10 +4,24 @@ import { addItem } from "../db";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 
 const showForm = ref(true);
+
+const newItem = ref({});
+
+function submit() {
+  addItem({
+    ...newItem.value,
+    type: "restitution",
+  });
+  newItem.value = {};
+}
 </script>
 
 <template>
-  <form v-if="showForm" class="card bg-base-200 shadow">
+  <form
+    v-if="showForm"
+    @submit.prevent="submit"
+    class="card bg-base-200 shadow"
+  >
     <div class="card-body relative gap-4">
       <h2 class="card-title justify-between">
         Rendre Pedro
@@ -15,6 +29,7 @@ const showForm = ref(true);
         <button
           @click="showForm = false"
           class="btn btn-ghost btn-circle btn-sm"
+          type="button"
         >
           <XMarkIcon class="size-6" />
         </button>
@@ -25,22 +40,37 @@ const showForm = ref(true);
           placeholder="Qui a utilisé la voiture ?"
           class="input w-full"
           required
+          v-model="newItem.user"
         />
         <span>Qui a utilisé la voiture ?</span>
       </label>
 
       <label class="floating-label">
-        <input placeholder="km" class="input w-full" type="number" required />
+        <input
+          placeholder="km"
+          class="input w-full"
+          type="number"
+          required
+          v-model="newItem.km"
+        />
         <span>km</span>
       </label>
 
       <label class="floating-label">
-        <input placeholder="Localisation" class="input w-full" type="number" />
+        <input
+          placeholder="Localisation"
+          class="input w-full"
+          v-model="newItem.location"
+        />
         <span>Localisation</span>
       </label>
 
       <label class="floating-label">
-        <textarea placeholder="notes" class="textarea w-full"></textarea>
+        <textarea
+          placeholder="notes"
+          class="textarea w-full"
+          v-model="newItem.notes"
+        ></textarea>
         <span>notes</span>
       </label>
 
