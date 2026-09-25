@@ -8,6 +8,8 @@ Les données sont stockées sur un serveur gun.js.
 
     npm install
 
+Set `VITE_GUN_PEERS` in `.env.local`.
+
 ## Dev
 
     npm run dev

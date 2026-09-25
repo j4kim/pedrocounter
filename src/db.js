@@ -4,7 +4,7 @@ import { computed, ref, watch } from "vue";
 
 export const dbId = useStorage("perdocounter-dbId");
 
-export const gun = GUN(["https://gun.jo2.ch/gun"]);
+export const gun = GUN(import.meta.env.VITE_GUN_PEERS.split(","));
 
 export let rootNode, itemsNode;
 
