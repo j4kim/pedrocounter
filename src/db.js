@@ -21,15 +21,23 @@ export async function connectToDb(newDbId) {
   itemsNode = rootNode.get("items");
   itemsNode.map().on(function (item, id) {
     console.log("on item", item, id);
-    if (item._) {
-      delete item._;
+    if (item) {
+      if (item._) {
+        delete item._;
+      }
+      itemsMap.value.set(id, item);
+    } else {
+      itemsMap.value.delete(id);
     }
-    itemsMap.value.set(id, item);
   });
 }
 
 export function addItem() {
   itemsNode.set({ km: prompt("km") });
+}
+
+export function deleteItem(id) {
+  itemsNode.get(id).put(null);
 }
 
 if (dbId.value) {

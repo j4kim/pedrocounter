@@ -1,6 +1,6 @@
 <script setup>
 import Header from "../components/Header.vue";
-import { addItem, dbId, itemsArray } from "../db.js";
+import { addItem, dbId, deleteItem, itemsArray } from "../db.js";
 import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
@@ -17,7 +17,10 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 
     <main class="p-4">
       <div>
-        <div v-for="[id, item] in itemsArray">item {{ id }}: {{ item.km }}</div>
+        <div v-for="[id, item] in itemsArray">
+          item {{ id }}: {{ item.km }}
+          <button class="btn btn-sm" @click="deleteItem(id)">x</button>
+        </div>
       </div>
 
       <button class="btn" @click="addItem">Rendre</button>
