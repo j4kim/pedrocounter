@@ -22,9 +22,6 @@ export async function connectToDb(newDbId) {
   itemsNode.map().on(function (item, id) {
     console.log("on item", item, id);
     if (item) {
-      if (item._) {
-        delete item._;
-      }
       itemsMap.value.set(id, item);
     } else {
       itemsMap.value.delete(id);
