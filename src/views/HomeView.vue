@@ -1,6 +1,6 @@
 <script setup>
 import Header from "../components/Header.vue";
-import { dbId } from "../db.js";
+import { addItem, dbId, itemsArray } from "../db.js";
 import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
@@ -14,5 +14,13 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
         <Cog6ToothIcon class="size-6" />
       </RouterLink>
     </Header>
+
+    <main class="p-4">
+      <div>
+        <div v-for="[id, item] in itemsArray">item {{ id }}: {{ item.km }}</div>
+      </div>
+
+      <button class="btn" @click="addItem">Rendre</button>
+    </main>
   </div>
 </template>
