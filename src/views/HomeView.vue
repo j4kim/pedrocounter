@@ -1,6 +1,7 @@
 <script setup>
 import Header from "../components/Header.vue";
-import { addItem, dbId, deleteItem, itemsArray } from "../db.js";
+import Restitute from "../components/Restitute.vue";
+import { dbId, deleteItem, itemsArray } from "../db.js";
 import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
@@ -23,7 +24,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
         </div>
       </div>
 
-      <button class="btn" @click="addItem">Rendre</button>
+      <Restitute />
     </main>
   </div>
 </template>
