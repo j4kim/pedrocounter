@@ -7,7 +7,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <template>
-  <div>
+  <div class="flex h-screen flex-col">
     <Header>
       <a href="/" class="hover:text-primary">pedrocounter</a>
       <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
@@ -17,19 +17,21 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </Header>
 
-    <main class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
-      <template v-for="[id, item] in itemsArray">
-        <RestitutionItem
-          v-if="item.type === 'restitution'"
-          :id
-          :item
-        ></RestitutionItem>
-        <div v-else class="font-mono wrap-break-word whitespace-pre">
-          {{ JSON.stringify(item, null, 2) }}
-        </div>
-      </template>
+    <main class="w-full overflow-auto">
+      <div class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
+        <template v-for="[id, item] in itemsArray">
+          <RestitutionItem
+            v-if="item.type === 'restitution'"
+            :id
+            :item
+          ></RestitutionItem>
+          <div v-else class="font-mono wrap-break-word whitespace-pre">
+            {{ JSON.stringify(item, null, 2) }}
+          </div>
+        </template>
 
-      <Restitute />
+        <Restitute />
+      </div>
     </main>
   </div>
 </template>
