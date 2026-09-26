@@ -21,13 +21,12 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 
     <main class="w-full overflow-auto pb-[50svh]">
       <div class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
-        <template v-for="[id, item] in itemsArray">
+        <template v-for="item in itemsArray">
           <RestitutionItem
             v-if="item.type === 'restitution'"
-            :id
             :item
           ></RestitutionItem>
-          <InitItem v-else-if="item.type === 'init'" :id :item></InitItem>
+          <InitItem v-else-if="item.type === 'init'" :item></InitItem>
           <div v-else class="font-mono wrap-break-word whitespace-pre">
             {{ JSON.stringify(item, null, 2) }}
           </div>

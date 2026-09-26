@@ -11,11 +11,15 @@ export let rootNode, itemsNode;
 export const itemsMap = ref(new Map());
 
 export const itemsArray = computed(() => {
-  return Array.from(itemsMap.value);
+  return Array.from(itemsMap.value).map(([id, item]) => {
+    item.id = id;
+    delete item._;
+    return item;
+  });
 });
 
 export const lastItem = computed(() => {
-  return itemsArray.value[itemsArray.value.length - 1]?.[1];
+  return itemsArray.value[itemsArray.value.length - 1];
 });
 
 export async function connectToDb(newDbId) {

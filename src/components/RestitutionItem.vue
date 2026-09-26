@@ -12,7 +12,6 @@ import { ref } from "vue";
 
 const props = defineProps({
   item: Object,
-  id: String,
 });
 
 const open = ref(false);
@@ -62,7 +61,7 @@ const open = ref(false);
       </div>
 
       <div v-if="debug">
-        <button class="btn btn-sm" @click="deleteItem(id)">
+        <button class="btn btn-sm" @click="deleteItem(item.id)">
           <XMarkIcon class="size-4" /> Supprimer
         </button>
       </div>

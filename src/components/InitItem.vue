@@ -6,7 +6,6 @@ import { debug } from "../debug.js";
 
 const props = defineProps({
   item: Object,
-  id: String,
 });
 </script>
 
@@ -23,7 +22,7 @@ const props = defineProps({
     </div>
 
     <div v-if="debug">
-      <button class="btn btn-sm" @click="deleteItem(id)">
+      <button class="btn btn-sm" @click="deleteItem(item.id)">
         <XMarkIcon class="size-4" /> Supprimer
       </button>
     </div>
