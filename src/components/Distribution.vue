@@ -4,6 +4,9 @@ import { deltaSum, deltaSumByUser } from "../db";
 const userColors = {};
 
 let bgColors = [
+  "bg-accent",
+  "bg-primary",
+  "bg-secondary",
   "bg-cyan-500",
   "bg-violet-500",
   "bg-rose-500",
@@ -38,7 +41,7 @@ function getColorClass(user) {
         }"
       ></div>
     </div>
-    <div class="flex gap-6">
+    <div class="flex flex-wrap gap-x-6">
       <div
         v-for="(km, user) in deltaSumByUser"
         class="flex flex-wrap items-center gap-2"

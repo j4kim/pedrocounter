@@ -47,7 +47,7 @@ function submit() {
   >
     <div class="card-body relative gap-4">
       <h2 class="card-title justify-between">
-        Rendre Pedro
+        Rendre
 
         <button
           @click="showForm = false"
