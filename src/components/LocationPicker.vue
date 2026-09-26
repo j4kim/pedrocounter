@@ -10,7 +10,9 @@ const emit = defineEmits(["close"]);
 
 const mapEl = useTemplateRef("mapEl");
 
-const defaultPos = [47.09929125386202, 6.8250728417801945];
+const defaultPos = model.value
+  ? model.value.split(",")
+  : [47.09929125386202, 6.8250728417801945];
 
 let map;
 
@@ -23,7 +25,9 @@ onMounted(() => {
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  map.locate({ setView: true, maxZoom: 17 });
+  if (!model.value) {
+    map.locate({ setView: true, maxZoom: 17 });
+  }
 
   const marker = L.marker(defaultPos).addTo(map);
 
