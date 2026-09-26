@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, useTemplateRef } from "vue";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+import L from "../leaflet";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 
 const model = defineModel({ type: String });

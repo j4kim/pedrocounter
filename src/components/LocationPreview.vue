@@ -1,7 +1,6 @@
 <script setup>
-import { computed, onMounted, ref, useTemplateRef, watch } from "vue";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+import { onMounted, ref, useTemplateRef, watch } from "vue";
+import L from "../leaflet";
 import { ArrowUpRightIcon } from "@heroicons/vue/24/solid";
 
 const props = defineProps({
