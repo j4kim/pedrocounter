@@ -1,6 +1,7 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Init from "../components/Init.vue";
+import InitItem from "../components/InitItem.vue";
 import Restitute from "../components/Restitute.vue";
 import RestitutionItem from "../components/RestitutionItem.vue";
 import { dbId, itemsArray } from "../db.js";
@@ -26,6 +27,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
             :id
             :item
           ></RestitutionItem>
+          <InitItem v-else-if="item.type === 'init'" :id :item></InitItem>
           <div v-else class="font-mono wrap-break-word whitespace-pre">
             {{ JSON.stringify(item, null, 2) }}
           </div>
