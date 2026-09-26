@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="card bg-base-200 p-6 shadow">
+  <div class="card bg-base-100 p-6 shadow">
     <div>{{ item.created_at }}</div>
     <div>{{ item.user }}</div>
     <div>{{ item.km }} km</div>

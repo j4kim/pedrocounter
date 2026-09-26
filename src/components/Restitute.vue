@@ -32,7 +32,7 @@ const users = ref(["Mimi", "Jojo"]);
   <form
     v-if="showForm"
     @submit.prevent="submit"
-    class="card bg-base-200 shadow"
+    class="card bg-base-100 shadow"
   >
     <div class="card-body relative gap-4">
       <h2 class="card-title justify-between">
@@ -93,11 +93,7 @@ const users = ref(["Mimi", "Jojo"]);
           />
           <span>Localisation</span>
         </label>
-        <button
-          class="btn bg-base-100 join-item"
-          @click="showMap = true"
-          type="button"
-        >
+        <button class="btn join-item" @click="showMap = true" type="button">
           <MapIcon class="size-6" />
           Carte
         </button>
@@ -126,5 +122,7 @@ const users = ref(["Mimi", "Jojo"]);
     </div>
   </form>
 
-  <button v-else class="btn w-full" @click="showForm = true">Rendre</button>
+  <button v-else class="btn btn-primary w-full" @click="showForm = true">
+    Rendre
+  </button>
 </template>
