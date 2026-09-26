@@ -55,12 +55,6 @@ if (dbId.value) {
 }
 
 export async function disconnectFromDb() {
-  if (
-    confirm(
-      "Les données actuelles seront remplacées par vos données locales. OK ?",
-    )
-  ) {
-    dbId.value = null;
-    location.reload();
-  }
+  dbId.value = null;
+  location.reload();
 }

@@ -19,12 +19,11 @@ import { debug } from "../debug.js";
         <div class="mb-2">Base de données</div>
         <div v-if="dbId" class="flex items-center gap-4">
           {{ dbId }}
-          <button class="red-btn" @click="disconnectFromDb">
+          <button class="btn btn-error btn-sm" @click="disconnectFromDb">
             <XMarkIcon class="inline size-5" />
             <span class="hidden sm:inline">Déconnecter</span>
           </button>
         </div>
-        <button class="btn" @click="connectToDb" v-else>Connecter</button>
       </div>
 
       <label class="label">
