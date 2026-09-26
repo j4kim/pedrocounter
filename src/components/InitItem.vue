@@ -18,7 +18,10 @@ const props = defineProps({
           le {{ dayjs(item.created_at).format("DD.MM.YYYY HH:mm") }}
         </div>
       </div>
-      <div class="font-semibold tabular-nums">{{ item.km }} km</div>
+      <div class="text-right">
+        <div class="text-base-content/50 text-sm">km au compteur</div>
+        <div class="font-semibold tabular-nums">{{ item.km }} km</div>
+      </div>
     </div>
 
     <div v-if="debug">
