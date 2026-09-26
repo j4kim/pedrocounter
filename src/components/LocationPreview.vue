@@ -2,6 +2,7 @@
 import { computed, onMounted, ref, useTemplateRef, watch } from "vue";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { ArrowUpRightIcon } from "@heroicons/vue/24/solid";
 
 const props = defineProps({
   latLng: String,
@@ -49,5 +50,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="mapEl" class="z-0 h-[20svh] w-full rounded bg-lime-200"></div>
+  <div class="relative z-0 h-[20svh]">
+    <div ref="mapEl" class="h-full w-full rounded bg-lime-200"></div>
+    <a
+      :href="`https://www.google.com/maps/place/${latLng}`"
+      target="_blank"
+      class="btn btn-xs absolute top-2 right-2 z-1000"
+    >
+      <ArrowUpRightIcon class="size-3" />
+      Ouvrir
+    </a>
+  </div>
 </template>
