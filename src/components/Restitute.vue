@@ -6,24 +6,31 @@ import LocationPicker from "./LocationPicker.vue";
 import { MapIcon } from "@heroicons/vue/24/outline";
 import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
 import { debug } from "../debug.js";
+import { useStorage } from "@vueuse/core";
 
 const showForm = ref(false);
 
 const showMap = ref(false);
 
-const newItem = ref({
-  km: lastItem.value?.km,
-});
+const preferredUser = useStorage("pedrocounter-preferred-user", null);
+
+function newItemDefaults() {
+  return {
+    km: lastItem.value?.km,
+    user: preferredUser.value,
+  };
+}
+
+const newItem = ref(newItemDefaults());
 
 function submit() {
+  preferredUser.value = newItem.value.user;
   addItem({
     created_at: Date.now(),
     type: "restitution",
     ...newItem.value,
   });
-  newItem.value = {
-    km: newItem.value.km,
-  };
+  newItem.value = newItemDefaults();
 }
 
 const users = ref(["Mimi", "Jojo"]);
