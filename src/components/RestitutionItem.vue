@@ -1,6 +1,7 @@
 <script setup>
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { deleteItem } from "../db";
+import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
 
 const dev = import.meta.env.DEV;
 
@@ -22,5 +23,6 @@ const props = defineProps({
         <XMarkIcon class="size-4" /> Supprimer
       </button>
     </div>
+    <LocationPreviewIfSet :location="item.location" />
   </div>
 </template>
