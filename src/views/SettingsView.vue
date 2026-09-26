@@ -3,6 +3,7 @@ import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { connectToDb, dbId, disconnectFromDb } from "../db.js";
 import HomeLink from "../components/HomeLink.vue";
 import Header from "../components/Header.vue";
+import { debug } from "../debug.js";
 </script>
 
 <template>
@@ -25,6 +26,11 @@ import Header from "../components/Header.vue";
         </div>
         <button class="btn" @click="connectToDb" v-else>Connecter</button>
       </div>
+
+      <label class="label">
+        <input type="checkbox" v-model="debug" class="toggle" />
+        Debug
+      </label>
     </main>
   </div>
 </template>

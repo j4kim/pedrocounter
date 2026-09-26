@@ -3,8 +3,7 @@ import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { deleteItem } from "../db";
 import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
 import dayjs from "dayjs";
-
-const dev = import.meta.env.DEV;
+import { debug } from "../debug.js";
 
 const props = defineProps({
   item: Object,
@@ -47,7 +46,7 @@ const props = defineProps({
       </div>
     </div>
 
-    <div v-if="dev">
+    <div v-if="debug">
       <button class="btn btn-sm" @click="deleteItem(id)">
         <XMarkIcon class="size-4" /> Supprimer
       </button>
