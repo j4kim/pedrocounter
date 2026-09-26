@@ -50,6 +50,8 @@ function disconnect() {
                 placeholder="Base de données"
                 required
                 v-model="newDbId"
+                autocorrect="off"
+                autocapitalize="none"
               />
               <button class="btn join-item">Connecter</button>
             </form>
