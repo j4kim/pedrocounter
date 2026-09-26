@@ -7,7 +7,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <template>
-  <div class="flex h-screen flex-col">
+  <div class="flex h-dvh flex-col">
     <Header>
       <a href="/" class="hover:text-primary">pedrocounter</a>
       <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
