@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { addItem, lastItem } from "../db";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
+import LocationPicker from "./LocationPicker.vue";
 
 const showForm = ref(true);
 
@@ -74,6 +75,8 @@ const users = ref(["Mimi", "Jojo"]);
         />
         <span>Localisation</span>
       </label>
+
+      <LocationPicker v-model="newItem.location" />
 
       <label class="floating-label">
         <textarea
