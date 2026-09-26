@@ -28,7 +28,7 @@ const open = ref(false);
           le {{ dayjs(item.created_at).format("DD.MM.YYYY HH:mm") }}
         </div>
       </div>
-      <div class="font-semibold tabular-nums">TODO km</div>
+      <div class="font-semibold tabular-nums">{{ item.delta }} km</div>
       <button
         class="btn btn-circle btn-ghost btn-sm"
         @click.stop="open = !open"

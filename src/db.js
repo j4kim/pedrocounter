@@ -11,8 +11,13 @@ export let rootNode, itemsNode;
 export const itemsMap = ref(new Map());
 
 export const itemsArray = computed(() => {
+  let km;
   return Array.from(itemsMap.value).map(([id, item]) => {
     item.id = id;
+    if (km) {
+      item.delta = item.km - km;
+    }
+    km = item.km;
     delete item._;
     return item;
   });

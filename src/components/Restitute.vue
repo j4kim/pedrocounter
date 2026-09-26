@@ -21,7 +21,12 @@ function newItemDefaults() {
   };
 }
 
-const newItem = ref(newItemDefaults());
+function openForm() {
+  newItem.value = newItemDefaults();
+  showForm.value = true;
+}
+
+const newItem = ref(null);
 
 function submit() {
   preferredUser.value = newItem.value.user;
@@ -30,7 +35,6 @@ function submit() {
     type: "restitution",
     ...newItem.value,
   });
-  newItem.value = newItemDefaults();
   showForm.value = false;
 }
 
@@ -125,7 +129,7 @@ const users = ref(["Mimi", "Jojo"]);
     </div>
   </form>
 
-  <button v-else class="btn btn-primary w-full" @click="showForm = true">
+  <button v-else class="btn btn-primary w-full" @click="openForm">
     Rendre
   </button>
 </template>
