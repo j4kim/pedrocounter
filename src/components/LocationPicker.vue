@@ -2,7 +2,7 @@
 import { onMounted, useTemplateRef } from "vue";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { MapPinIcon, XMarkIcon } from "@heroicons/vue/24/solid";
+import { XMarkIcon } from "@heroicons/vue/24/solid";
 
 const model = defineModel({ type: String });
 
@@ -10,17 +10,24 @@ const emit = defineEmits(["close"]);
 
 const mapEl = useTemplateRef("map");
 
+const defaultPos = [47.09929125386202, 6.8250728417801945];
+
 onMounted(() => {
-  const map = L.map(mapEl.value).setView(
-    [47.09929125386202, 6.8250728417801945],
-    16,
-  );
+  const map = L.map(mapEl.value).setView(defaultPos, 17);
+
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
-  map.locate({ setView: true, maxZoom: 16 });
+
+  map.locate({ setView: true, maxZoom: 17 });
+
+  const marker = L.marker(defaultPos).addTo(map);
+
+  map.on("move", () => {
+    marker.setLatLng(map.getCenter());
+  });
 });
 </script>
 
@@ -42,8 +49,5 @@ onMounted(() => {
         Sélectionner
       </button>
     </div>
-    <MapPinIcon
-      class="absolute top-[calc(50dvh-30px)] left-[calc(50dvw-20px)] z-1000 size-[40px]"
-    />
   </div>
 </template>
