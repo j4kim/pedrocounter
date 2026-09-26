@@ -79,7 +79,11 @@ const users = ref(["Mimi", "Jojo"]);
         <span>Localisation</span>
       </label>
 
-      <LocationPicker v-if="showMap" v-model="newItem.location" />
+      <LocationPicker
+        v-if="showMap"
+        v-model="newItem.location"
+        @close="showMap = false"
+      />
 
       <label class="floating-label">
         <textarea
