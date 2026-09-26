@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, useTemplateRef } from "vue";
+import { computed, onMounted, ref, useTemplateRef, watch } from "vue";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -7,11 +7,23 @@ const props = defineProps({
   latLng: String,
 });
 
-const parsedLatLng = computed(() => props.latLng.split(","));
+const parsedLatLng = ref(null);
+
+let map, marker;
+
+watch(
+  props,
+  () => {
+    parsedLatLng.value = props.latLng.split(",");
+    if (marker) {
+      marker.setLatLng(parsedLatLng.value);
+      map.setView(parsedLatLng.value);
+    }
+  },
+  { immediate: true },
+);
 
 const mapEl = useTemplateRef("mapEl");
-
-let map;
 
 onMounted(() => {
   map = L.map(mapEl.value, {
@@ -32,7 +44,7 @@ onMounted(() => {
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  const marker = L.marker(parsedLatLng.value).addTo(map);
+  marker = L.marker(parsedLatLng.value).addTo(map);
 });
 </script>
 
