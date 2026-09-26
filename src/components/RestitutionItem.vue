@@ -19,22 +19,19 @@ const open = ref(false);
 </script>
 
 <template>
-  <div
-    class="card bg-base-100 flex flex-col gap-2 p-6 shadow"
-    @click="open = true"
-  >
-    <div class="flex gap-2">
+  <div class="card bg-base-100 flex flex-col gap-2 p-6 shadow">
+    <div class="flex items-center gap-2">
       <div class="grow">
-        <span class="font-medium">
+        <div class="font-medium">
           {{ item.user }}
-        </span>
-        <span class="text-base-content/50">
+        </div>
+        <div class="text-base-content/50 text-sm">
           le {{ dayjs(item.created_at).format("DD.MM.YYYY HH:mm") }}
-        </span>
+        </div>
       </div>
       <div class="font-semibold tabular-nums">TODO km</div>
       <button
-        class="btn btn-circle btn-ghost btn-sm -mt-0.5"
+        class="btn btn-circle btn-ghost btn-sm"
         @click.stop="open = !open"
       >
         <ChevronUpIcon class="size-4" v-if="open" />
