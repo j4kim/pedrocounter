@@ -53,12 +53,20 @@ function select() {
     <div ref="mapEl" class="absolute z-20 h-full w-full bg-lime-200"></div>
     <div class="absolute flex h-full w-full flex-col px-4 py-8">
       <div class="flex justify-end">
-        <button @click="clear" class="btn btn-circle z-1000" type="button">
+        <button
+          @click="clear"
+          class="btn btn-circle bg-base-100 z-1000"
+          type="button"
+        >
           <XMarkIcon class="size-6" />
         </button>
       </div>
       <div class="grow"></div>
-      <button class="btn z-1000 w-full" type="button" @click="select">
+      <button
+        class="btn bg-base-100 z-1000 w-full"
+        type="button"
+        @click="select"
+      >
         Sélectionner
       </button>
     </div>

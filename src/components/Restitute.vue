@@ -84,19 +84,17 @@ const users = ref(["Mimi", "Jojo"]);
         <span>km au compteur</span>
       </label>
 
-      <div class="join w-full">
-        <label class="floating-label join-item grow">
-          <input
-            placeholder="Localisation"
-            class="input w-full"
-            v-model="newItem.location"
-          />
-          <span>Localisation</span>
-        </label>
+      <div class="join floating-label w-full">
+        <input
+          placeholder="Localisation"
+          class="input join-item w-full grow"
+          v-model="newItem.location"
+        />
         <button class="btn join-item" @click="showMap = true" type="button">
           <MapIcon class="size-6" />
           Carte
         </button>
+        <span>Localisation</span>
       </div>
 
       <LocationPicker
