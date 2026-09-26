@@ -16,10 +16,14 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </Header>
 
-    <main class="p-4">
-      <div>
-        <div v-for="[id, item] in itemsArray">
-          item {{ id }}: {{ item.km }}
+    <main class="flex flex-col gap-4 p-4">
+      <div class="card bg-base-200 p-5 shadow" v-for="[id, item] in itemsArray">
+        <div>{{ item.created_at }}</div>
+        <div>{{ item.user }}</div>
+        <div>{{ item.km }} km</div>
+        <div>{{ item.location }}</div>
+        <div>{{ item.notes }}</div>
+        <div>
           <button class="btn btn-sm" @click="deleteItem(id)">x</button>
         </div>
       </div>

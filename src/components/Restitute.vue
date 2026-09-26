@@ -10,6 +10,7 @@ const newItem = ref({});
 function submit() {
   addItem({
     ...newItem.value,
+    created_at: Date.now(),
     type: "restitution",
   });
   newItem.value = {};
