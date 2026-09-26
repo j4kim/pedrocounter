@@ -1,4 +1,5 @@
 <script setup>
+import Distribution from "../components/Distribution.vue";
 import Header from "../components/Header.vue";
 import Init from "../components/Init.vue";
 import InitItem from "../components/InitItem.vue";
@@ -19,7 +20,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </Header>
 
-    <main class="w-full overflow-auto pb-[50svh]">
+    <main class="w-full overflow-auto">
       <div class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
         <template v-for="item in itemsArray">
           <RestitutionItem
@@ -34,6 +35,8 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 
         <Restitute v-if="itemsArray.length" />
         <Init v-else />
+
+        <Distribution class="pt-[40svh] pb-4" />
       </div>
     </main>
   </div>

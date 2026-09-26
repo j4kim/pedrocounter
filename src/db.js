@@ -35,6 +35,25 @@ export const lastItem = computed(() => {
   return itemsArray.value[itemsArray.value.length - 1];
 });
 
+export const deltaSum = computed(() =>
+  itemsArray.value.reduce((a, i) => a + (i.delta ?? 0), 0),
+);
+
+export const deltaSumByUser = computed(() => {
+  const result = {};
+  itemsArray.value.forEach((item) => {
+    if (item.type !== "restitution") {
+      return;
+    }
+    if (result[item.user]) {
+      result[item.user] = result[item.user] + item.delta;
+    } else {
+      result[item.user] = item.delta;
+    }
+  });
+  return result;
+});
+
 export async function connectToDb(newDbId) {
   console.log("connectToDb", dbId);
   dbId.value = newDbId;
