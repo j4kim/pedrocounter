@@ -14,6 +14,10 @@ export const itemsArray = computed(() => {
   return Array.from(itemsMap.value);
 });
 
+export const lastItem = computed(() => {
+  return itemsArray.value[itemsArray.value.length - 1][1];
+});
+
 export async function connectToDb(newDbId) {
   console.log("connectToDb", dbId);
   dbId.value = newDbId;

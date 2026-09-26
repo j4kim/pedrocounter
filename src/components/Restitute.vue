@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from "vue";
-import { addItem } from "../db";
+import { addItem, lastItem } from "../db";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 
 const showForm = ref(true);
 
-const newItem = ref({});
+const newItem = ref({
+  km: lastItem.value.km,
+});
 
 function submit() {
   addItem({
