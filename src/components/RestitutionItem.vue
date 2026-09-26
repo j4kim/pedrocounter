@@ -1,5 +1,8 @@
 <script setup>
+import { XMarkIcon } from "@heroicons/vue/24/solid";
 import { deleteItem } from "../db";
+
+const dev = import.meta.env.DEV;
 
 const props = defineProps({
   item: Object,
@@ -14,8 +17,10 @@ const props = defineProps({
     <div>{{ item.km }} km</div>
     <div>{{ item.location }}</div>
     <div>{{ item.notes }}</div>
-    <div>
-      <button class="btn btn-sm" @click="deleteItem(id)">x</button>
+    <div v-if="dev">
+      <button class="btn btn-sm" @click="deleteItem(id)">
+        <XMarkIcon class="size-4" /> Supprimer
+      </button>
     </div>
   </div>
 </template>
