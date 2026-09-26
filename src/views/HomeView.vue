@@ -1,5 +1,6 @@
 <script setup>
 import Header from "../components/Header.vue";
+import Init from "../components/Init.vue";
 import Restitute from "../components/Restitute.vue";
 import RestitutionItem from "../components/RestitutionItem.vue";
 import { dbId, itemsArray } from "../db.js";
@@ -30,7 +31,8 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
           </div>
         </template>
 
-        <Restitute />
+        <Restitute v-if="itemsArray.length" />
+        <Init v-else />
       </div>
     </main>
   </div>
