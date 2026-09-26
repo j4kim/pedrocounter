@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { addItem } from "../db";
+import { debug } from "../debug";
 
 const newItem = ref({});
 
@@ -28,6 +29,16 @@ function submit() {
           v-model="newItem.km"
         />
         <span>km au compteur</span>
+      </label>
+
+      <label class="floating-label" v-if="debug">
+        <input
+          placeholder="date et heure"
+          class="input w-full"
+          type="datetime-local"
+          v-model="newItem.created_at"
+        />
+        <span>date et heure</span>
       </label>
 
       <div class="card-actions">

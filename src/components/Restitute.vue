@@ -5,6 +5,7 @@ import { XMarkIcon } from "@heroicons/vue/24/solid";
 import LocationPicker from "./LocationPicker.vue";
 import { MapIcon } from "@heroicons/vue/24/outline";
 import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
+import { debug } from "../debug.js";
 
 const showForm = ref(false);
 
@@ -16,9 +17,9 @@ const newItem = ref({
 
 function submit() {
   addItem({
-    ...newItem.value,
     created_at: Date.now(),
     type: "restitution",
+    ...newItem.value,
   });
   newItem.value = {
     km: newItem.value.km,
@@ -112,6 +113,16 @@ const users = ref(["Mimi", "Jojo"]);
           v-model="newItem.notes"
         ></textarea>
         <span>notes</span>
+      </label>
+
+      <label class="floating-label" v-if="debug">
+        <input
+          placeholder="date et heure"
+          class="input w-full"
+          type="datetime-local"
+          v-model="newItem.created_at"
+        />
+        <span>date et heure</span>
       </label>
 
       <div class="card-actions">
