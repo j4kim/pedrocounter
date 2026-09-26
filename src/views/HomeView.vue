@@ -1,12 +1,13 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Restitute from "../components/Restitute.vue";
-import { dbId, deleteItem, itemsArray } from "../db.js";
+import RestitutionItem from "../components/RestitutionItem.vue";
+import { dbId, itemsArray } from "../db.js";
 import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <template>
-  <div>
+  <div class="flex h-screen flex-col">
     <Header>
       <a href="/" class="hover:text-primary">pedrocounter</a>
       <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
@@ -16,19 +17,21 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </Header>
 
-    <main class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
-      <div class="card bg-base-200 p-5 shadow" v-for="[id, item] in itemsArray">
-        <div>{{ item.created_at }}</div>
-        <div>{{ item.user }}</div>
-        <div>{{ item.km }} km</div>
-        <div>{{ item.location }}</div>
-        <div>{{ item.notes }}</div>
-        <div>
-          <button class="btn btn-sm" @click="deleteItem(id)">x</button>
-        </div>
-      </div>
+    <main class="w-full overflow-auto pb-[50svh]">
+      <div class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
+        <template v-for="[id, item] in itemsArray">
+          <RestitutionItem
+            v-if="item.type === 'restitution'"
+            :id
+            :item
+          ></RestitutionItem>
+          <div v-else class="font-mono wrap-break-word whitespace-pre">
+            {{ JSON.stringify(item, null, 2) }}
+          </div>
+        </template>
 
-      <Restitute />
+        <Restitute />
+      </div>
     </main>
   </div>
 </template>

@@ -2,11 +2,16 @@
 import { ref } from "vue";
 import { addItem, lastItem } from "../db";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
+import LocationPicker from "./LocationPicker.vue";
+import { MapIcon } from "@heroicons/vue/24/outline";
+import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
 
-const showForm = ref(true);
+const showForm = ref(false);
+
+const showMap = ref(false);
 
 const newItem = ref({
-  km: lastItem.value.km,
+  km: lastItem.value?.km,
 });
 
 function submit() {
@@ -15,7 +20,9 @@ function submit() {
     created_at: Date.now(),
     type: "restitution",
   });
-  newItem.value = {};
+  newItem.value = {
+    km: newItem.value.km,
+  };
 }
 
 const users = ref(["Mimi", "Jojo"]);
@@ -25,7 +32,7 @@ const users = ref(["Mimi", "Jojo"]);
   <form
     v-if="showForm"
     @submit.prevent="submit"
-    class="card bg-base-200 shadow"
+    class="card bg-base-100 shadow"
   >
     <div class="card-body relative gap-4">
       <h2 class="card-title justify-between">
@@ -42,38 +49,61 @@ const users = ref(["Mimi", "Jojo"]);
 
       <div>
         <label>Qui a utilisé la voiture ?</label>
+        <input
+          v-for="user in users"
+          type="radio"
+          name="user"
+          class="w-px opacity-0"
+          v-model="newItem.user"
+          :value="user"
+          required
+          :id="`user-${user}`"
+        />
         <div class="mt-1 flex flex-wrap gap-2">
           <label
             class="btn grow"
             v-for="user in users"
+            :for="`user-${user}`"
             :class="{
               'btn-soft btn-primary pointer-events-none': newItem.user === user,
             }"
-            @click="newItem.user = user"
-            >{{ user }}</label
           >
+            {{ user }}
+          </label>
         </div>
       </div>
 
       <label class="floating-label">
         <input
-          placeholder="km"
+          placeholder="km au compteur"
           class="input w-full"
           type="number"
           required
           v-model="newItem.km"
         />
-        <span>km</span>
+        <span>km au compteur</span>
       </label>
 
-      <label class="floating-label">
+      <div class="join floating-label w-full">
         <input
           placeholder="Localisation"
-          class="input w-full"
+          class="input join-item w-full grow"
           v-model="newItem.location"
         />
+        <button class="btn join-item" @click="showMap = true" type="button">
+          <MapIcon class="size-6" />
+          Carte
+        </button>
         <span>Localisation</span>
-      </label>
+      </div>
+
+      <LocationPicker
+        v-if="showMap"
+        v-model="newItem.location"
+        @close="showMap = false"
+      />
+
+      <LocationPreviewIfSet :location="newItem.location" />
 
       <label class="floating-label">
         <textarea
@@ -90,5 +120,7 @@ const users = ref(["Mimi", "Jojo"]);
     </div>
   </form>
 
-  <button v-else class="btn w-full" @click="showForm = true">Rendre</button>
+  <button v-else class="btn btn-primary w-full" @click="showForm = true">
+    Rendre
+  </button>
 </template>
