@@ -31,6 +31,7 @@ function submit() {
     ...newItem.value,
   });
   newItem.value = newItemDefaults();
+  showForm.value = false;
 }
 
 const users = ref(["Mimi", "Jojo"]);
