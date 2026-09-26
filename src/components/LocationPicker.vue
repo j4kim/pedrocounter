@@ -8,12 +8,14 @@ const model = defineModel({ type: String });
 
 const emit = defineEmits(["close"]);
 
-const mapEl = useTemplateRef("map");
+const mapEl = useTemplateRef("mapEl");
 
 const defaultPos = [47.09929125386202, 6.8250728417801945];
 
+let map;
+
 onMounted(() => {
-  const map = L.map(mapEl.value).setView(defaultPos, 17);
+  map = L.map(mapEl.value).setView(defaultPos, 17);
 
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -29,15 +31,26 @@ onMounted(() => {
     marker.setLatLng(map.getCenter());
   });
 });
+
+function clear() {
+  model.value = null;
+  emit("close");
+}
+
+function select() {
+  const center = map.getCenter();
+  model.value = `${center.lat},${center.lng}`;
+  emit("close");
+}
 </script>
 
 <template>
   <div class="fixed top-0 left-0 z-10 h-dvh w-dvw">
-    <div ref="map" class="absolute z-20 h-full w-full bg-lime-200"></div>
+    <div ref="mapEl" class="absolute z-20 h-full w-full bg-lime-200"></div>
     <div class="absolute flex h-full w-full flex-col px-4 py-8">
       <div class="flex justify-end">
         <button
-          @click="emit('close')"
+          @click="clear"
           class="btn bg-base-100 btn-circle z-1000"
           type="button"
         >
@@ -45,7 +58,11 @@ onMounted(() => {
         </button>
       </div>
       <div class="grow"></div>
-      <button class="btn bg-base-100 z-1000 w-full" type="button">
+      <button
+        class="btn bg-base-100 z-1000 w-full"
+        type="button"
+        @click="select"
+      >
         Sélectionner
       </button>
     </div>
