@@ -3,6 +3,8 @@ import { onMounted, useTemplateRef } from "vue";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+const model = defineModel({ type: String });
+
 const mapEl = useTemplateRef("map");
 
 onMounted(() => {
@@ -15,9 +17,15 @@ onMounted(() => {
     attribution:
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
+  map.locate({ setView: true, maxZoom: 16 });
 });
 </script>
 
 <template>
-  <div ref="map" class="h-[50svh]"></div>
+  <div>
+    <div ref="map" class="h-[50svh] rounded-t bg-white"></div>
+    <button class="btn btn-primary btn-soft w-full rounded-t-none">
+      Sélectionner
+    </button>
+  </div>
 </template>
