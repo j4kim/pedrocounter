@@ -1,10 +1,10 @@
 <script setup>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { addItem, lastItem } from "../db";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import LocationPicker from "./LocationPicker.vue";
 import { MapIcon } from "@heroicons/vue/24/outline";
-import LocationPreview from "./LocationPreview.vue";
+import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
 
 const showForm = ref(true);
 
@@ -24,17 +24,6 @@ function submit() {
 }
 
 const users = ref(["Mimi", "Jojo"]);
-
-const latLng = computed(() => {
-  if (!newItem.value.location) {
-    return null;
-  }
-  const matches = newItem.value.location.match(/\d+\.\d+,\d+\.\d+/);
-  if (!matches) {
-    return null;
-  }
-  return matches[0];
-});
 </script>
 
 <template>
@@ -107,7 +96,7 @@ const latLng = computed(() => {
         @close="showMap = false"
       />
 
-      <LocationPreview v-if="latLng" :latLng="latLng" />
+      <LocationPreviewIfSet :location="newItem.location" />
 
       <label class="floating-label">
         <textarea
