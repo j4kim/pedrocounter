@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { addItem, lastItem } from "../db";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import LocationPicker from "./LocationPicker.vue";
+import { MapIcon } from "@heroicons/vue/24/outline";
 
 const showForm = ref(true);
 
@@ -69,15 +70,20 @@ const users = ref(["Mimi", "Jojo"]);
         <span>km</span>
       </label>
 
-      <label class="floating-label">
-        <input
-          placeholder="Localisation"
-          class="input w-full"
-          v-model="newItem.location"
-          @focus="showMap = true"
-        />
-        <span>Localisation</span>
-      </label>
+      <div class="join w-full">
+        <label class="floating-label join-item grow">
+          <input
+            placeholder="Localisation"
+            class="input w-full"
+            v-model="newItem.location"
+          />
+          <span>Localisation</span>
+        </label>
+        <button class="btn bg-base-100 join-item" @focus="showMap = true">
+          <MapIcon class="size-6" />
+          Carte
+        </button>
+      </div>
 
       <LocationPicker
         v-if="showMap"
