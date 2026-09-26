@@ -24,7 +24,10 @@ onMounted(() => {
 <template>
   <div>
     <div ref="map" class="h-[50svh] rounded-t bg-white"></div>
-    <button class="btn btn-primary btn-soft w-full rounded-t-none">
+    <button
+      class="btn btn-primary btn-soft w-full rounded-t-none"
+      type="button"
+    >
       Sélectionner
     </button>
   </div>
