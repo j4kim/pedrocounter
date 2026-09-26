@@ -17,7 +17,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </Header>
 
-    <main class="w-full overflow-auto">
+    <main class="w-full overflow-auto pb-[50svh]">
       <div class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
         <template v-for="[id, item] in itemsArray">
           <RestitutionItem
