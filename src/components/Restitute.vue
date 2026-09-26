@@ -47,16 +47,27 @@ const users = ref(["Mimi", "Jojo"]);
 
       <div>
         <label>Qui a utilisé la voiture ?</label>
+        <input
+          v-for="user in users"
+          type="radio"
+          name="user"
+          class="w-px opacity-0"
+          v-model="newItem.user"
+          :value="user"
+          required
+          :id="`user-${user}`"
+        />
         <div class="mt-1 flex flex-wrap gap-2">
           <label
             class="btn grow"
             v-for="user in users"
+            :for="`user-${user}`"
             :class="{
               'btn-soft btn-primary pointer-events-none': newItem.user === user,
             }"
-            @click="newItem.user = user"
-            >{{ user }}</label
           >
+            {{ user }}
+          </label>
         </div>
       </div>
 
