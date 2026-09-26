@@ -62,13 +62,13 @@ const users = ref(["Mimi", "Jojo"]);
 
       <label class="floating-label">
         <input
-          placeholder="km"
+          placeholder="km au compteur"
           class="input w-full"
           type="number"
           required
           v-model="newItem.km"
         />
-        <span>km</span>
+        <span>km au compteur</span>
       </label>
 
       <div class="join w-full">
