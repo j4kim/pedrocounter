@@ -6,6 +6,8 @@ import LocationPicker from "./LocationPicker.vue";
 
 const showForm = ref(true);
 
+const showMap = ref(false);
+
 const newItem = ref({
   km: lastItem.value.km,
 });
@@ -72,11 +74,12 @@ const users = ref(["Mimi", "Jojo"]);
           placeholder="Localisation"
           class="input w-full"
           v-model="newItem.location"
+          @focus="showMap = true"
         />
         <span>Localisation</span>
       </label>
 
-      <LocationPicker v-model="newItem.location" />
+      <LocationPicker v-if="showMap" v-model="newItem.location" />
 
       <label class="floating-label">
         <textarea
