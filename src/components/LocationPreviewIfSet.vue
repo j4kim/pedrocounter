@@ -20,4 +20,5 @@ const latLng = computed(() => {
 
 <template>
   <LocationPreview v-if="latLng" :latLng="latLng" />
+  <slot v-else></slot>
 </template>

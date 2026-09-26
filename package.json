@@ -12,6 +12,7 @@
     "@heroicons/vue": "^2.2.0",
     "@tailwindcss/vite": "^4.3.3",
     "@vueuse/core": "^14.4.0",
+    "dayjs": "^1.11.23",
     "gun": "^0.2020.1241",
     "leaflet": "^1.9.4",
     "tailwindcss": "^4.3.3",
