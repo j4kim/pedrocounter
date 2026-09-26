@@ -6,12 +6,12 @@ import LocationPicker from "./LocationPicker.vue";
 import { MapIcon } from "@heroicons/vue/24/outline";
 import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
 
-const showForm = ref(true);
+const showForm = ref(false);
 
 const showMap = ref(false);
 
 const newItem = ref({
-  km: lastItem.value.km,
+  km: lastItem.value?.km,
 });
 
 function submit() {
@@ -20,7 +20,9 @@ function submit() {
     created_at: Date.now(),
     type: "restitution",
   });
-  newItem.value = {};
+  newItem.value = {
+    km: newItem.value.km,
+  };
 }
 
 const users = ref(["Mimi", "Jojo"]);

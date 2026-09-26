@@ -15,7 +15,7 @@ export const itemsArray = computed(() => {
 });
 
 export const lastItem = computed(() => {
-  return itemsArray.value[itemsArray.value.length - 1][1];
+  return itemsArray.value[itemsArray.value.length - 1]?.[1];
 });
 
 export async function connectToDb(newDbId) {
