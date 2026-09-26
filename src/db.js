@@ -6,9 +6,17 @@ export const dbId = useStorage("perdocounter-dbId");
 
 export const gun = GUN(import.meta.env.VITE_GUN_PEERS.split(","));
 
-export let rootNode, itemsNode;
+export let rootNode, itemsNode, settingsNode;
 
 export const itemsMap = ref(new Map());
+
+export const settings = ref({
+  users: [],
+});
+
+const jsonSettings = computed(() => JSON.stringify(settings.value));
+
+watch(jsonSettings, (newValue) => settingsNode.put(newValue));
 
 export const itemsArray = computed(() => {
   let km;
@@ -38,6 +46,13 @@ export async function connectToDb(newDbId) {
       itemsMap.value.set(id, item);
     } else {
       itemsMap.value.delete(id);
+    }
+  });
+  settingsNode = rootNode.get("settings");
+  settingsNode.on((newJsonSettings) => {
+    console.log("on settings", newJsonSettings);
+    if (newJsonSettings !== jsonSettings.value) {
+      settings.value = JSON.parse(newJsonSettings);
     }
   });
 }

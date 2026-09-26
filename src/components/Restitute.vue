@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { addItem, lastItem } from "../db";
+import { addItem, lastItem, settings } from "../db";
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 import LocationPicker from "./LocationPicker.vue";
 import { MapIcon } from "@heroicons/vue/24/outline";
@@ -37,8 +37,6 @@ function submit() {
   });
   showForm.value = false;
 }
-
-const users = ref(["Mimi", "Jojo"]);
 </script>
 
 <template>
@@ -67,7 +65,7 @@ const users = ref(["Mimi", "Jojo"]);
           required
         >
           <option disabled selected>-</option>
-          <option v-for="user in users">{{ user }}</option>
+          <option v-for="user in settings.users">{{ user }}</option>
         </select>
         <span>Qui a utilisé la voiture ?</span>
       </label>
