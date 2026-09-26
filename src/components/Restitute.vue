@@ -15,6 +15,8 @@ function submit() {
   });
   newItem.value = {};
 }
+
+const users = ref(["Mimi", "Jojo"]);
 </script>
 
 <template>
@@ -36,15 +38,20 @@ function submit() {
         </button>
       </h2>
 
-      <label class="floating-label">
-        <input
-          placeholder="Qui a utilisé la voiture ?"
-          class="input w-full"
-          required
-          v-model="newItem.user"
-        />
-        <span>Qui a utilisé la voiture ?</span>
-      </label>
+      <div>
+        <label>Qui a utilisé la voiture ?</label>
+        <div class="mt-1 flex flex-wrap gap-2">
+          <label
+            class="btn grow"
+            v-for="user in users"
+            :class="{
+              'btn-soft btn-primary pointer-events-none': newItem.user === user,
+            }"
+            @click="newItem.user = user"
+            >{{ user }}</label
+          >
+        </div>
+      </div>
 
       <label class="floating-label">
         <input
