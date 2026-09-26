@@ -2,7 +2,7 @@
 import { onMounted, useTemplateRef } from "vue";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { XMarkIcon } from "@heroicons/vue/24/solid";
+import { MapPinIcon, XMarkIcon } from "@heroicons/vue/24/solid";
 
 const model = defineModel({ type: String });
 
@@ -26,19 +26,24 @@ onMounted(() => {
 
 <template>
   <div class="fixed top-0 left-0 z-10 h-dvh w-dvw">
-    <div ref="map" class="absolute h-full w-full bg-lime-200"></div>
-    <div class="absolute z-1000 flex h-full w-full flex-col px-4 py-8">
+    <div ref="map" class="absolute z-20 h-full w-full bg-lime-200"></div>
+    <div class="absolute flex h-full w-full flex-col px-4 py-8">
       <div class="flex justify-end">
         <button
           @click="emit('close')"
-          class="btn bg-base-100 btn-circle"
+          class="btn bg-base-100 btn-circle z-1000"
           type="button"
         >
           <XMarkIcon class="size-6" />
         </button>
       </div>
       <div class="grow"></div>
-      <button class="btn bg-base-100 w-full" type="button">Sélectionner</button>
+      <button class="btn bg-base-100 z-1000 w-full" type="button">
+        Sélectionner
+      </button>
     </div>
+    <MapPinIcon
+      class="absolute top-[calc(50dvh-30px)] left-[calc(50dvw-20px)] z-1000 size-[40px]"
+    />
   </div>
 </template>
