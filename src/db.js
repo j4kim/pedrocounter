@@ -31,6 +31,12 @@ export const itemsArray = computed(() => {
   });
 });
 
+export const displayedItems = ref(2);
+
+export const pagedItemsArray = computed(() => {
+  return itemsArray.value.slice(-displayedItems.value);
+});
+
 export const lastItem = computed(() => {
   return itemsArray.value[itemsArray.value.length - 1];
 });

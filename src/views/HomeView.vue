@@ -5,7 +5,7 @@ import Init from "../components/Init.vue";
 import InitItem from "../components/InitItem.vue";
 import Restitute from "../components/Restitute.vue";
 import RestitutionItem from "../components/RestitutionItem.vue";
-import { dbId, itemsArray } from "../db.js";
+import { dbId, displayedItems, itemsArray, pagedItemsArray } from "../db.js";
 import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
@@ -22,7 +22,15 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 
     <main class="w-full overflow-auto">
       <div class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
-        <template v-for="item in itemsArray">
+        <button
+          class="btn"
+          v-if="pagedItemsArray.length < itemsArray.length"
+          @click="displayedItems += 10"
+        >
+          Voir les entrées précédentes
+        </button>
+
+        <template v-for="item in pagedItemsArray">
           <RestitutionItem
             v-if="item.type === 'restitution'"
             :item
