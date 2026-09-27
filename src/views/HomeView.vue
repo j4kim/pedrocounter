@@ -10,7 +10,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 </script>
 
 <template>
-  <div class="flex h-dvh flex-col">
+  <div class="flex h-svh flex-col">
     <Header>
       <a href="/" class="hover:text-primary">pedrocounter</a>
       <div v-if="dbId" class="text-slate-500">({{ dbId }})</div>
@@ -20,8 +20,8 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </RouterLink>
     </Header>
 
-    <main class="w-full overflow-auto">
-      <div class="mx-auto flex max-w-3xl flex-col gap-4 p-4">
+    <main class="h-full w-full overflow-auto">
+      <div class="mx-auto flex h-full max-w-3xl flex-col gap-4 p-4">
         <button
           class="btn"
           v-if="pagedItemsArray.length < itemsArray.length"
@@ -44,7 +44,9 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
         <Restitute v-if="itemsArray.length" />
         <Init v-else />
 
-        <Distribution class="pt-[40svh] pb-4" />
+        <div class="grow"></div>
+
+        <Distribution class="py-6" />
       </div>
     </main>
   </div>

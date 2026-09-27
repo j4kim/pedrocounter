@@ -1,6 +1,7 @@
 import { useStorage } from "@vueuse/core";
 import GUN from "gun";
 import { computed, ref, watch } from "vue";
+import { log } from "./debug";
 
 export const dbId = useStorage("perdocounter-dbId");
 
@@ -61,12 +62,12 @@ export const deltaSumByUser = computed(() => {
 });
 
 export async function connectToDb(newDbId) {
-  console.log("connectToDb", dbId);
+  log("connectToDb", dbId.value);
   dbId.value = newDbId;
   rootNode = gun.get("pedrocounter-" + dbId.value);
   itemsNode = rootNode.get("items");
   itemsNode.map().on(function (item, id) {
-    console.log("on item", item, id);
+    log("on item", item, id);
     if (item) {
       itemsMap.value.set(id, item);
     } else {
@@ -75,7 +76,7 @@ export async function connectToDb(newDbId) {
   });
   settingsNode = rootNode.get("settings");
   settingsNode.on((newJsonSettings) => {
-    console.log("on settings", newJsonSettings);
+    log("on settings", newJsonSettings);
     if (newJsonSettings !== jsonSettings.value) {
       settings.value = JSON.parse(newJsonSettings);
     }
