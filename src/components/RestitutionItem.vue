@@ -33,10 +33,7 @@ const open = ref(false);
       <MapPinIcon v-if="item.location" class="size-4" />
       <InformationCircleIcon v-if="item.notes" class="size-4" />
       <div class="font-semibold tabular-nums">{{ item.delta }} km</div>
-      <button
-        class="btn btn-circle btn-ghost btn-sm"
-        @click.stop="open = !open"
-      >
+      <button class="btn btn-circle btn-ghost" @click.stop="open = !open">
         <ChevronUpIcon class="size-4" v-if="open" />
         <ChevronDownIcon class="size-4" v-else />
       </button>
