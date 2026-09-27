@@ -20,7 +20,7 @@ function disconnect() {
 </script>
 
 <template>
-  <div class="flex min-h-dvh flex-col">
+  <div class="flex min-h-svh flex-col">
     <Header v-if="dbId">
       <HomeLink />
       Base de données
