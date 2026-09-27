@@ -2,6 +2,7 @@
 import {
   ChevronDownIcon,
   ChevronUpIcon,
+  MapPinIcon,
   XMarkIcon,
 } from "@heroicons/vue/24/solid";
 import { deleteItem } from "../db";
@@ -9,6 +10,7 @@ import LocationPreviewIfSet from "./LocationPreviewIfSet.vue";
 import dayjs from "dayjs";
 import { debug } from "../debug.js";
 import { ref } from "vue";
+import { InformationCircleIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
   item: Object,
@@ -28,6 +30,8 @@ const open = ref(false);
           le {{ dayjs(item.created_at).format("DD.MM.YYYY HH:mm") }}
         </div>
       </div>
+      <MapPinIcon v-if="item.location" class="size-4" />
+      <InformationCircleIcon v-if="item.notes" class="size-4" />
       <div class="font-semibold tabular-nums">{{ item.delta }} km</div>
       <button
         class="btn btn-circle btn-ghost btn-sm"
